@@ -450,6 +450,22 @@ Validated during this session:
 - local Part 2 proof path: create `sample_mask.npy`, run `uv run python -m iceye_ai_engineer.part2_blob_boxes sample_mask.npy`, then inspect `blob_bounding_boxes.csv`
 - `uv run pytest`
 
+## Known Limitations
+
+- Part 1 entity extraction depends on the chosen GLiNER model and may truncate very long passages during inference, which can reduce recall on long sentences.
+- Part 2 expects a caller-provided 2D NumPy binary mask and does not ship with an assessor-provided `.npy` input file.
+- The Part 2 geometry test is intentionally structural and deterministic; it does not attempt to prove exact floating-point optimality for every possible blob shape.
+
+## Dependency Warnings During Validation
+
+Validated runs in this repository may show warnings from third-party packages such as `glinker`, `pydantic`, `torch`, or `huggingface_hub`.
+
+What these warnings mean in this repository state:
+
+- they come from dependencies rather than the application code in this repo
+- they were observed during successful runs of `uv sync`, `uv run pytest`, and the Part 1 / Part 2 CLI flows
+- they are non-blocking for the implemented assignment behavior
+
 ## Questions Answered Explicitly
 
 ### Did I read the PDF in detail?
