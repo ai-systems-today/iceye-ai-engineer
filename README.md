@@ -88,7 +88,7 @@ These are good engineering practices that are relevant, but they are not all exp
 
 ### .gitignore
 
-There is currently no [.gitignore](.gitignore) file in the repository.
+The repository now includes [.gitignore](.gitignore).
 
 Best-practice recommendation:
 
@@ -106,7 +106,7 @@ Why it matters:
 
 ### .gitattributes
 
-There is currently no [.gitattributes](.gitattributes) file in the repository.
+The repository now includes [.gitattributes](.gitattributes).
 
 Best-practice recommendation:
 
@@ -125,14 +125,28 @@ The current archive is [iceye-ai-engineer-current-state.zip](iceye-ai-engineer-c
 How it was created:
 
 ```powershell
-Compress-Archive -Path AI* , data , iceye_ai_engineer , pyproject.toml , README.md , REQUIREMENTS_TRACE.md , tests , uv.lock -DestinationPath iceye-ai-engineer-current-state.zip -Force
+Compress-Archive -Path AI* , data , iceye_ai_engineer , pyproject.toml , README.md , REQUIREMENTS_TRACE.md , tests , uv.lock , .gitignore , .gitattributes -DestinationPath iceye-ai-engineer-current-state.zip -Force
 ```
 
 Why this shape was used:
 
 - includes the PDF, source, tests, lock file, and documentation
+- includes `.gitignore` and `.gitattributes`
 - excludes `.git/` and `.venv/`
 - matches the PDF request for a repo zip rather than a virtual environment bundle
+
+### Recreate The Archive
+
+If you make any final edits before submission, recreate the delivery archive with:
+
+```powershell
+Compress-Archive -Path AI* , data , iceye_ai_engineer , pyproject.toml , README.md , REQUIREMENTS_TRACE.md , tests , uv.lock , .gitignore , .gitattributes -DestinationPath iceye-ai-engineer-current-state.zip -Force
+```
+
+Why rerun this step:
+
+- ensures the zip matches the latest saved files
+- keeps the documentation and tests synchronized with the delivered archive
 
 ## Part 1 Design Choices
 
