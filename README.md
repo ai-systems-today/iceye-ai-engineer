@@ -2,6 +2,44 @@
 
 This repository is built to match the requirements in [AI Engineer Technical Homework Task.pdf](AI%20Engineer%20Technical%20Homework%20Task.pdf).
 
+## Reviewer Quick Start
+
+If you are reviewing the submission from the zip archive, the fastest path is:
+
+1. Extract [iceye-ai-engineer-current-state.zip](iceye-ai-engineer-current-state.zip).
+2. Open the extracted folder in a terminal.
+3. Install the project environment:
+
+```powershell
+py -3.12 -m uv sync
+```
+
+4. Run the tests:
+
+```powershell
+uv run pytest
+```
+
+5. Optionally run Part 1 ingestion on the included PDF:
+
+```powershell
+uv run python -m iceye_ai_engineer.part1_ingest "AI Engineer Technical Homework Task.pdf" organization location person
+```
+
+6. Optionally run the Part 1 chatbot against the saved entity file:
+
+```powershell
+uv run python -m iceye_ai_engineer.part1_chatbot data/part1_entities.json "How many mentions of AI Engineer are in the doc?"
+```
+
+7. Optionally run Part 2 with your own NumPy mask input:
+
+```powershell
+uv run python -m iceye_ai_engineer.part2_blob_boxes path/to/mask.npy
+```
+
+The main outputs to inspect are the test results, [data/part1_entities.json](data/part1_entities.json), and `blob_bounding_boxes.csv`.
+
 ## Scope
 
 The PDF is the source of truth for this repository.
