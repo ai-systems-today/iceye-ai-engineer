@@ -1,0 +1,34 @@
+{
+  "document_path": "AI Engineer Technical Homework Task.pdf",
+  "labels": [
+    "organization",
+    "location",
+    "person"
+  ],
+  "entities": [
+    {
+      "text": "AI Engineer",
+      "label": "person",
+      "start": 0,
+      "end": 11,
+      "left_context": "",
+      "right_context": "Technical Homework\r\nTask: Integration and Applica"
+    },
+    {
+      "text": "AI\r\nEngineer",
+      "label": "person",
+      "start": 159,
+      "end": 171,
+      "left_context": "d to assess skills relevant to a Forward Deployed",
+      "right_context": "role, focusing on integration, application buildi"
+    },
+    {
+      "text": "Candidates",
+      "label": "person",
+      "start": 264,
+      "end": 274,
+      "left_context": "building, and core algorithmic\r\nproblem-solving.",
+      "right_context": "are expected to demonstrate proficiency with stan"
+    }
+  ]
+}
