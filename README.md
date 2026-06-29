@@ -373,6 +373,45 @@ Input note for Part 2:
 - the repository does not ship with a permanent sample mask because the PDF does not provide one
 - use a real assessor-provided mask or generate a local test mask
 
+### Local Part 2 Example
+
+To generate a small local mask and run Part 2 end to end:
+
+1. Create a sample mask file:
+
+```powershell
+@'
+import numpy as np
+
+mask = np.zeros((8, 8), dtype=np.uint8)
+mask[1:3, 1:4] = 1
+mask[5:7, 5:7] = 1
+
+np.save("sample_mask.npy", mask)
+print("saved sample_mask.npy")
+'@ | uv run python -
+```
+
+2. Run the Part 2 CLI with that file:
+
+```powershell
+uv run python -m iceye_ai_engineer.part2_blob_boxes sample_mask.npy
+```
+
+3. Inspect the generated CSV:
+
+```powershell
+Get-Content blob_bounding_boxes.csv
+```
+
+Example output from the local validation run in this repository:
+
+```csv
+blob_id,center_x,center_y,width,height,angle
+1,2.0,1.5000000000000002,2.0,3.0,-90.0
+2,5.5,5.5,2.0,2.0,-90.0
+```
+
 ## Run tests
 
 Run the test suite with:
@@ -408,6 +447,7 @@ Validated during this session:
 - `uv run python -m iceye_ai_engineer.part1_ingest "AI Engineer Technical Homework Task.pdf" organization location person`
 - `uv run python -m iceye_ai_engineer.part1_chatbot data/part1_entities.json "How many mentions of AI Engineer are in the doc?"`
 - `uv run python -m iceye_ai_engineer.part2_blob_boxes path/to/mask.npy` on a synthetic validation mask
+- local Part 2 proof path: create `sample_mask.npy`, run `uv run python -m iceye_ai_engineer.part2_blob_boxes sample_mask.npy`, then inspect `blob_bounding_boxes.csv`
 - `uv run pytest`
 
 ## Questions Answered Explicitly
