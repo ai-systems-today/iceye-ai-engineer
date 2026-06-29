@@ -18,7 +18,10 @@ What has been implemented in this session:
 What has not been completed in this session:
 
 - The two handwritten unit tests required by the PDF
-- Final zip packaging of the repository
+
+What has been completed for delivery packaging in this session:
+
+- Created the current-state archive [iceye-ai-engineer-current-state.zip](iceye-ai-engineer-current-state.zip)
 
 ## Phase Status
 
@@ -39,7 +42,7 @@ This repository was executed against the original 11-phase implementation plan d
 Why phases 10 and 11 are only partial:
 
 - Phase 10 is partially done because install and execute instructions are documented, but there is no fully compliant test section yet because the required handwritten tests do not exist.
-- Phase 11 is partially done because the implemented code paths were validated, but full end-state PDF compliance still depends on phase 9 and final delivery packaging.
+- Phase 11 is partially done because the implemented code paths were validated and the delivery zip was created, but full end-state PDF compliance still depends on phase 9.
 
 ## Session Trace
 
@@ -160,7 +163,6 @@ Remaining items:
 - Write one handwritten unit test for Part 1 under [tests](tests)
 - Write one handwritten unit test for Part 2 under [tests](tests)
 - Add the final test execution instructions once those handwritten tests exist
-- Create the final zip file for delivery
 
 The [tests](tests) directory exists but is currently empty.
 
