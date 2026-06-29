@@ -360,12 +360,12 @@ Expected result:
 - Read a 2D NumPy binary mask
 - Identify connected blobs
 - Write one CSV row per blob with columns:
-	- `blob_id`
-	- `center_x`
-	- `center_y`
-	- `width`
-	- `height`
-	- `angle`
+  - `blob_id`
+  - `center_x`
+  - `center_y`
+  - `width`
+  - `height`
+  - `angle`
 
 Input note for Part 2:
 
