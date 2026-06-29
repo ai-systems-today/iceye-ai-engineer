@@ -1,18 +1,18 @@
 # AI Engineer Technical Homework Task
 
-This repository is being implemented strictly against [AI Engineer Technical Homework Task.pdf](AI%20Engineer%20Technical%20Homework%20Task.pdf).
+This repository is built to match the requirements in [AI Engineer Technical Homework Task.pdf](AI%20Engineer%20Technical%20Homework%20Task.pdf).
 
 ## Scope
 
-The PDF is the governing brief for this repository.
+The PDF is the source of truth for this repository.
 
-Important interpretation rule used in this repository:
+To keep the implementation focused and easy to review, I used these rules while building it:
 
 - If the PDF explicitly requires something, it was treated as mandatory.
 - If the PDF leaves something open, the smallest compliant implementation was chosen.
 - If something is good engineering practice but not explicitly required by the PDF, it is called out separately as a recommendation rather than presented as a requirement.
 
-What has been implemented in this session:
+What is included here:
 
 - Part 1 document ingestion with `kreuzberg`
 - Part 1 named entity detection with `glinker`
@@ -21,13 +21,13 @@ What has been implemented in this session:
 - Part 2 connected-component blob detection from a 2D NumPy binary mask
 - Part 2 rotated bounding box CSV generation
 
-What has been completed for delivery packaging in this session:
+Delivery artifact:
 
 - Created the current-state archive [iceye-ai-engineer-current-state.zip](iceye-ai-engineer-current-state.zip)
 
 ## Phase Status
 
-This repository was executed against the original 11-phase implementation plan derived from [AI Engineer Technical Homework Task.pdf](AI%20Engineer%20Technical%20Homework%20Task.pdf).
+The work was tracked against the original 11-phase implementation plan derived from [AI Engineer Technical Homework Task.pdf](AI%20Engineer%20Technical%20Homework%20Task.pdf).
 
 1. Repository skeleton: done
 2. Exact dependency pinning: done
@@ -41,7 +41,7 @@ This repository was executed against the original 11-phase implementation plan d
 10. README with install, execute, and test guidance: done
 11. Final compliance verification: done
 
-Why the final three phases are now marked done:
+Why phases 9 through 11 are marked done:
 
 - Phase 9 is done because the repository now contains one focused unit test for Part 1 and one focused unit test for Part 2 under [tests](tests).
 - Phase 10 is done because install, execute, and test instructions are now all documented.
@@ -49,7 +49,7 @@ Why the final three phases are now marked done:
 
 ## Session Trace
 
-This section records the work completed from the beginning of the session.
+This section is a short build log of what was done from the start of the session.
 
 1. Read [AI Engineer Technical Homework Task.pdf](AI%20Engineer%20Technical%20Homework%20Task.pdf) and extracted the task requirements.
 2. Confirmed the workspace initially contained only the PDF and a Git repository.
@@ -74,17 +74,17 @@ This section records the work completed from the beginning of the session.
 
 ## Environment
 
-Validated environment for the implemented solution:
+Validated environment:
 
 - Python: 3.12.10
 - Project environment: `.venv`
 - Setup command: `uv sync`
 
-The repository was validated using Python 3.12 because the PDF allows only Python 3.12 or 3.13.
+Python 3.12 was used because the PDF allows only Python 3.12 or Python 3.13.
 
 ## Best Practices And Non-PDF Extras
 
-These are good engineering practices that are relevant, but they are not all explicitly required by the PDF.
+These items are not all explicitly required by the PDF, but they improve the repo and make delivery cleaner.
 
 ### .gitignore
 
@@ -122,13 +122,13 @@ Why it matters:
 
 The current archive is [iceye-ai-engineer-current-state.zip](iceye-ai-engineer-current-state.zip).
 
-How it was created:
+Archive command:
 
 ```powershell
 Compress-Archive -Path AI* , data , iceye_ai_engineer , pyproject.toml , README.md , REQUIREMENTS_TRACE.md , tests , uv.lock , .gitignore , .gitattributes -DestinationPath iceye-ai-engineer-current-state.zip -Force
 ```
 
-Why this shape was used:
+Why this archive shape was used:
 
 - includes the PDF, source, tests, lock file, and documentation
 - includes `.gitignore` and `.gitattributes`
@@ -137,7 +137,7 @@ Why this shape was used:
 
 ### Recreate The Archive
 
-If you make any final edits before submission, recreate the delivery archive with:
+If you make any final edits before submission, recreate the archive with:
 
 ```powershell
 Compress-Archive -Path AI* , data , iceye_ai_engineer , pyproject.toml , README.md , REQUIREMENTS_TRACE.md , tests , uv.lock , .gitignore , .gitattributes -DestinationPath iceye-ai-engineer-current-state.zip -Force
@@ -304,7 +304,7 @@ So the current choice was to stay minimal and strictly within the brief.
 uv sync
 ```
 
-This is the required setup command for the repository state produced in this session.
+This is the required setup command for the current repository state.
 
 ## Files Added In This Session
 
@@ -327,7 +327,7 @@ Part 1 ingestion:
 uv run python -m iceye_ai_engineer.part1_ingest "AI Engineer Technical Homework Task.pdf" organization location person
 ```
 
-Expected result:
+What this does:
 
 - Extract text from the PDF with `kreuzberg`
 - Detect named entities with `glinker`
@@ -339,7 +339,7 @@ Part 1 single-turn chatbot against the stored entity file:
 uv run python -m iceye_ai_engineer.part1_chatbot data/part1_entities.json "How many mentions of AI Engineer are in the doc?"
 ```
 
-Expected result:
+What this does:
 
 - Load only the stored entity JSON file
 - Return structured JSON with:
@@ -355,7 +355,7 @@ uv run python -m iceye_ai_engineer.part2_blob_boxes path/to/mask.npy
 
 This writes `blob_bounding_boxes.csv` in the repository root.
 
-Expected result:
+What this does:
 
 - Read a 2D NumPy binary mask
 - Identify connected blobs
@@ -420,14 +420,14 @@ Run the test suite with:
 uv run pytest
 ```
 
-The repository now contains:
+The repository includes:
 
 - [tests/test_part1.py](tests/test_part1.py): verifies normalized unique entity output and reply counting from the stored entity data
 - [tests/test_part2.py](tests/test_part2.py): verifies two-blob detection and required CSV header output
 
 ## Step-By-Step Test Creation
 
-This section records the test-writing steps in the same way the rest of the README traces the session.
+This section explains how the tests were put together and why they are scoped the way they are.
 
 1. Picked deterministic helper functions instead of full external-model integration paths so the tests stay fast and stable.
 2. For Part 1, used the local `EntityStore` and `ExtractedEntity` models to build an in-memory stored entity dataset.
@@ -441,7 +441,7 @@ This section records the test-writing steps in the same way the rest of the READ
 
 ## Validation Completed
 
-Validated during this session:
+Validated in this repository:
 
 - `py -3.12 -m uv sync`
 - `uv run python -m iceye_ai_engineer.part1_ingest "AI Engineer Technical Homework Task.pdf" organization location person`
