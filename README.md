@@ -20,6 +20,27 @@ What has not been completed in this session:
 - The two handwritten unit tests required by the PDF
 - Final zip packaging of the repository
 
+## Phase Status
+
+This repository was executed against the original 11-phase implementation plan derived from [AI Engineer Technical Homework Task.pdf](AI%20Engineer%20Technical%20Homework%20Task.pdf).
+
+1. Repository skeleton: done
+2. Exact dependency pinning: done
+3. Part 1 ingestion with `kreuzberg` then `glinker`: done
+4. Part 1 structured Pydantic output model: done
+5. Part 1 single-turn chatbot logic using only stored entities: done
+6. Part 2 blob identification from a 2D NumPy mask: done
+7. Part 2 rotated rectangle computation: done
+8. Part 2 CSV output generation: done
+9. One handwritten unit test per task: not done
+10. README with install, execute, and test guidance: partially done
+11. Final compliance verification: partially done
+
+Why phases 10 and 11 are only partial:
+
+- Phase 10 is partially done because install and execute instructions are documented, but there is no fully compliant test section yet because the required handwritten tests do not exist.
+- Phase 11 is partially done because the implemented code paths were validated, but full end-state PDF compliance still depends on phase 9 and final delivery packaging.
+
 ## Session Trace
 
 This section records the work completed from the beginning of the session.
@@ -91,9 +112,9 @@ Expected result:
 
 - Load only the stored entity JSON file
 - Return structured JSON with:
-	reply
-	unique entities
-	label for each entity
+  - `reply`
+  - `entities`
+  - `label` for each entity
 
 Part 2 rotated blob bounding boxes from a 2D NumPy mask stored as a `.npy` file:
 
@@ -108,7 +129,12 @@ Expected result:
 - Read a 2D NumPy binary mask
 - Identify connected blobs
 - Write one CSV row per blob with columns:
-	`blob_id`, `center_x`, `center_y`, `width`, `height`, `angle`
+	- `blob_id`
+	- `center_x`
+	- `center_y`
+	- `width`
+	- `height`
+	- `angle`
 
 ## Run tests
 
@@ -135,6 +161,8 @@ Remaining items:
 - Write one handwritten unit test for Part 2 under [tests](tests)
 - Add the final test execution instructions once those handwritten tests exist
 - Create the final zip file for delivery
+
+The [tests](tests) directory exists but is currently empty.
 
 ## Requirement Status
 
